@@ -102,7 +102,7 @@ jQuery( function( $ ) {
 				dateFormat: $(this).data('date-format')
 			});
 		});
-
+		
 		// Colorpicker
 		$('.js-cztm-colorpicker', object).wpColorPicker();
 
@@ -246,7 +246,7 @@ jQuery( function( $ ) {
 		// Call
 		$.post(
 			Cuztom.ajax_url,
-			data,
+			data, 
 			function(response) {
 				var response = $.parseJSON(response);
 
@@ -294,9 +294,9 @@ jQuery( function( $ ) {
 
 		parent.find( '.cuztom-preview').html('');
 		parent.find( '.cuztom-hidden').val('');
-
+		
 		that.hide();
-
+		
 		return false;
 	});
 
@@ -377,9 +377,9 @@ jQuery( function( $ ) {
 				}
 			};
 
-		$.post(
-			Cuztom.ajax_url,
-			data,
+		$.post( 
+			Cuztom.ajax_url, 
+			data, 
 			function(response) {
 				var response 		= $.parseJSON(response),
 					border_color 	= input.css('border-color');
@@ -393,55 +393,4 @@ jQuery( function( $ ) {
 		// Prevent click
 		event.preventDefault();
 	});
-
-	// Set location default
-	$(document).on( 'click', '.js-cztm-location-default', function(event) {
-		var td = $(this).closest('.cuztom-td');
-
-		$('.cuztom-location-latitude, .cuztom-location-longitude', td).each( function() {
-			$(this).val( $(this).data('default-value') );
-		});
-
-		// Prevent click
-		event.preventDefault();
-	});
-
-	// Update marker
-	$(document).on( 'keyup blur', '.cuztom-location-latitude, .cuztom-location-longitude', function(event) {
-		var td 			= $(this).closest('.cuztom-td'),
-			mapElement 	= $('.cuztom-location-map', td),
-			latField 	= $('.cuztom-location-latitude', td),
-			lngField 	= $('.cuztom-location-longitude', td);
-
-		var map 		= mapElement.data('map'),
-			marker 		= mapElement.data('map-marker'),
-			latitude 	= parseFloat( latField.val() ),
-			longitude	= parseFloat( lngField.val() ),
-			latDefault 	= parseFloat( latField.data('default-value') ),
-			lngDefault 	= parseFloat( lngField.data('default-value') );
-
-		if( latitude < -90 || latitude > 90 || isNaN(latitude) ) {
-			latitude = latDefault;
-		}
-
-		if( longitude < -180 || longitude > 180 || isNaN(longitude) ) {
-			longitude = lngDefault;
-		}
-
-		latitude 	= latitude.toFixed(6);
-		longitude 	= longitude.toFixed(6);
-		latLng 		= new google.maps.LatLng(latitude, longitude);
-
-		map.setCenter(latLng);
-		marker.setPosition(latLng);
-	});
-
-	// Gallery edit button
-	$(document).on( 'click', '.js-cztm-edit-gallery', function( event ) {
-		cuztomGalleries[ $( this ).closest( '.cuztom-gallery' ).data( 'name' ) ].open();
-
-		// Prevent click
-		event.preventDefault();
-	} );
-
 });
