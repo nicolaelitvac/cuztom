@@ -111,7 +111,6 @@ class Cuztom
 		include( self::$dir . '/classes/fields/class-term-select.php' );
 		include( self::$dir . '/classes/fields/class-term-checkboxes.php' );
 		include( self::$dir . '/classes/fields/class-location.php' );
-		include( self::$dir . '/classes/fields/class-gallery.php' );
 
 		// Functions
 		include( self::$dir . '/functions/post-type.php' );
