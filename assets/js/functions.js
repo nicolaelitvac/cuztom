@@ -26,6 +26,28 @@ jQuery( function( $ ) {
 		
 		// Colorpicker
 		$('.js-cuztom-colorpicker', object).wpColorPicker();
+        
+        //CodeMirror
+        $('.codearea', object).each(function(index, element) {
+            CodeMirror.fromTextArea(
+                $(this)[0], 
+                {
+                    mode: "text/html",
+                    lineNumbers: true,
+                    autoCloseTags: true,
+                    autoCloseBrackets: true,
+                    styleActiveLine: true,
+                    lineWrapping: true,
+                    matchTags: {bothTags: true},
+                    extraKeys: {
+                        "Ctrl-Space": "autocomplete",
+                        "Ctrl-J": "toMatchingTag"
+                    },
+                    viewportMargin: Infinity
+                }
+            );
+        });
+            
 
 		// Tabs
 		$('.js-cuztom-tabs', object).tabs();
@@ -272,6 +294,13 @@ jQuery( function( $ ) {
 					var last_id = cuztom_input.attr('id'), last_name = cuztom_input.attr('name');
 					$(this).find('span.mceEditor').remove();
 					cuztom_input.show();
+				}
+
+				// CodeArea
+				if( cuztom_input.hasClass('codearea') ) {
+					var last_id = cuztom_input.attr('id'),
+                        last_name = cuztom_input.attr('name');
+					$(this).find('.CodeMirror').remove();
 				}
 
 				// New name and id attributes
