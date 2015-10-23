@@ -38,6 +38,7 @@ jQuery( function( $ ) {
                     autoCloseBrackets: true,
                     styleActiveLine: true,
                     lineWrapping: true,
+                    showCursorWhenSelecting: true,
                     matchTags: {bothTags: true},
                     extraKeys: {
                         "Ctrl-Space": "autocomplete",

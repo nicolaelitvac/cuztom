@@ -138,6 +138,7 @@ class Cuztom_Initializer
 		wp_register_style( 'cuztom-jquery-ui', '//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery-ui.css', false, CUZTOM_VERSION, 'screen' );
 		wp_register_style( 'cuztom', CUZTOM_URL . '/assets/css/style.css', false, CUZTOM_VERSION, 'screen' );
 		wp_register_style( 'codemirror-css', CUZTOM_URL . '/assets/codemirror/lib/codemirror.css', false, CUZTOM_VERSION, 'screen' );
+		wp_register_style( 'codemirror-dialog-css', CUZTOM_URL . '/assets/codemirror/addon/dialog/dialog.css', false, CUZTOM_VERSION, 'screen' );
 	}
 
 	/**
@@ -152,6 +153,7 @@ class Cuztom_Initializer
 		wp_enqueue_style( 'thickbox' );
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_style( 'codemirror-css' );
+		wp_enqueue_style( 'codemirror-dialog-css' );
         wp_enqueue_style( 'cuztom-jquery-ui' );
 		wp_enqueue_style( 'cuztom' );
 	}
@@ -169,6 +171,9 @@ class Cuztom_Initializer
 		wp_register_script( 'cuztom', 				CUZTOM_URL . '/assets/js/functions.js', 			array( 'jquery', 'jquery-ui-core', 'jquery-ui-datepicker', 'jquery-ui-tabs', 'jquery-ui-accordion', 'jquery-ui-sortable', 'wp-color-picker', 'jquery-timepicker', 'jquery-ui-slider', 'codemirror-js' ), CUZTOM_VERSION, true );
         //CodeMirror
         wp_register_script( 'codemirror-js', 	CUZTOM_URL . '/assets/codemirror/lib/codemirror.js', 	array(), CUZTOM_VERSION, true );
+        wp_register_script( 'codemirror-addon-searchcursor', 	CUZTOM_URL . '/assets/codemirror/addon/search/searchcursor.js', 	array('codemirror-js'), CUZTOM_VERSION, true );
+        wp_register_script( 'codemirror-addon-search', 	CUZTOM_URL . '/assets/codemirror/addon/search/search.js', 	array('codemirror-js'), CUZTOM_VERSION, true );
+        wp_register_script( 'codemirror-addon-dialog', 	CUZTOM_URL . '/assets/codemirror/addon/dialog/dialog.js', 	array('codemirror-js'), CUZTOM_VERSION, true );
         wp_register_script( 'codemirror-addon-fullscreen', 	CUZTOM_URL . '/assets/codemirror/addon/display/fullscreen.js', 	array('codemirror-js'), CUZTOM_VERSION, true );
         wp_register_script( 'codemirror-addon-closetag', 	CUZTOM_URL . '/assets/codemirror/addon/edit/closetag.js', 	array('codemirror-js'), CUZTOM_VERSION, true );
         wp_register_script( 'codemirror-addon-closebrackets', 	CUZTOM_URL . '/assets/codemirror/addon/edit/closebrackets.js', 	array('codemirror-js'), CUZTOM_VERSION, true );
@@ -198,6 +203,9 @@ class Cuztom_Initializer
 		wp_enqueue_script( 'media-upload' );
         //CodeMirror
         wp_enqueue_script( 'codemirror-js' );
+        wp_enqueue_script( 'codemirror-addon-searchcursor' );
+        wp_enqueue_script( 'codemirror-addon-search' );
+        wp_enqueue_script( 'codemirror-addon-dialog' );
         wp_enqueue_script( 'codemirror-addon-fullscreen' );
         wp_enqueue_script( 'codemirror-addon-closetag' );
         wp_enqueue_script( 'codemirror-addon-closebrackets' );
